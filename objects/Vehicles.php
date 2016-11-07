@@ -15,6 +15,9 @@ class Vehicle {
     $query = "INSERT INTO " . $this->table_name . " SET name = :name, vehicle = :vehicle";
     // Uses PDO prepare() method to get PDOStatement object
     $stmt = $this->conn->prepare($query);
+
+    $this->name = htmlspecialchars(strip_tags($this->name));
+    $this->vehicle = htmlspecialchars(strip_tags($this->vehicle));
     // Sets object properties to PDO parameters
     $stmt->bindParam(':name', $this->name);
     $stmt->bindParam(':vehicle', $this->vehicle);
@@ -34,7 +37,7 @@ class Vehicle {
     $stmt = $this->conn->prepare($query);
 
     $stmt->execute();
-    
+
     return $stmt;
     // if($stmt->execute()){
     //   return $stmt;
