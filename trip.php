@@ -14,12 +14,12 @@ if ($_POST){
   $trip->location = $_POST['location'];
   $trip->lat = $_POST['lat'];
   $trip->lon = $_POST['lon'];
-  $trip->vehicle_id = $_POST['vehicle_id'] + 1;
+  $trip->vehicle_id = $_POST['vehicle_id'];
 
   if($trip->create()){
     echo "<div class=\"alert alert-success alert-dismissable\">";
     echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-    echo "Vechicle " . $trip->location ." was created.";
+    echo "Trip to " . $trip->location ." created.";
     echo "</div>";
   } else {
     echo "<div class=\"alert alert-danger alert-dismissable\">";
@@ -59,7 +59,7 @@ if ($_POST){
           if($num > 0){
             while($row_veh = $stmt->fetch(PDO::FETCH_ASSOC)){
               extract($row_veh);
-              echo "<option name='{$id}'>{$vehicle}</option>";
+              echo "<option name='{$id}' value='{$id}'>{$vehicle}</option>";
             }
           }
           else {
