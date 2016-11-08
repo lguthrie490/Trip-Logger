@@ -7,7 +7,7 @@ vehicle VARCHAR(100)
 );
 CREATE TABLE IF NOT EXISTS Trips(
 id int AUTO_INCREMENT PRIMARY KEY,
-vehicle_id int FOREIGN KEY REFERENCES Vehicles,
+vehicle_id int REFERENCES Vehicles,
 location VARCHAR(100),
 lat FLOAT(10,6),
 lon FLOAT(10,6)
