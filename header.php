@@ -11,7 +11,7 @@
   <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
       <li><a href="/read.php">Read</a></li>
-      <!--<li><a href="/trip.php">Insert Trip</a></li>-->
+      <li><a href="/trip.php">Insert Trip</a></li>
       <li><a href="/index.php">Insert Vehicle</a></li>
     </ul>
   </nav>
