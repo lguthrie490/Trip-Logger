@@ -5,6 +5,29 @@ $database = new Database();
 $db = $database->connect();
 include_once 'objects/VehicleList.php';
 $vehicle_list = new VehicleList($db);
+
+if ($_POST){
+  include_once 'objects/Trip.php';
+
+  $trip = new Trip($db);
+
+  $trip->location = $_POST['location'];
+  $trip->lat = $_POST['lat'];
+  $trip->lon = $_POST['lon'];
+  $trip->vehicle_id = $_POST['vehicle_id'] + 1;
+
+  if($trip->create()){
+    echo "<div class=\"alert alert-success alert-dismissable\">";
+    echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
+    echo "Vechicle " . $trip->location ." was created.";
+    echo "</div>";
+  } else {
+    echo "<div class=\"alert alert-danger alert-dismissable\">";
+    echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
+    echo "Unable to create trip.";
+    echo "</div>";
+  }
+}
 ?>
 <form class="" action="trip.php" method="post">
   <table class="table table-responsive">
@@ -44,6 +67,12 @@ $vehicle_list = new VehicleList($db);
           }
            ?>
         </select>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </td>
     </tr>
   </table>
