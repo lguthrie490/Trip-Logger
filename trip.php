@@ -7,7 +7,7 @@ include_once 'objects/VehicleList.php';
 $vehicle_list = new VehicleList($db);
 
 if ($_POST){
-  include_once 'objects/Trip.php';
+  include_once 'objects/Trips.php';
 
   $trip = new Trip($db);
 
