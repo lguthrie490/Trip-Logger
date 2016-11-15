@@ -7,19 +7,21 @@ include_once 'objects/VehicleList.php';
 $vehicle_list = new VehicleList($db);
 
 if ($_POST){
-  include_once 'objects/Trips.php';
+  require_once 'objects/Trips.php';
 
   $trip = new Trip($db);
 
-  $trip->location = $_POST['location'];
+  $trip->name = $_POST['name'];
+  $trip->address = $_POST['address'];
   $trip->lat = $_POST['lat'];
   $trip->lon = $_POST['lon'];
+  $trip->type = $_POST['type'];
   $trip->vehicle_id = $_POST['vehicle_id'];
 
   if($trip->create()){
     echo "<div class=\"alert alert-success alert-dismissable\">";
     echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-    echo "Trip to " . $trip->location ." created.";
+    echo "Trip to " . $trip->name ." created.";
     echo "</div>";
   } else {
     echo "<div class=\"alert alert-danger alert-dismissable\">";
@@ -32,9 +34,15 @@ if ($_POST){
 <form class="" action="trip.php" method="post">
   <table class="table table-responsive">
     <tr>
-      <td>Location:</td>
+      <td>Name:</td>
       <td>
-        <input type="text" name="location" value="">
+        <input type="text" name="name" value="">
+      </td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td>
+        <input type="text" name="address" value="">
       </td>
     </tr>
     <tr>
@@ -67,6 +75,12 @@ if ($_POST){
           }
            ?>
         </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>
+        <input type="text" name="type" value="">
       </td>
     </tr>
     <tr>
