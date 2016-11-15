@@ -9,7 +9,7 @@ class Reader{
   }
 
   public function read(){
-    $query = "SELECT t.location, t.lat, t.lon, v.name, v.vehicle
+    $query = "SELECT t.name, t.address, t.lat, t.lon, t.type, v.vehicle
     FROM Trips t
     INNER JOIN Vehicles v
     ON t.vehicle_id = v.id";
@@ -18,5 +18,7 @@ class Reader{
     $stmt->execute();
     return $stmt;
   }
+
+
 }
  ?>

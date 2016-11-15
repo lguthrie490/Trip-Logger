@@ -3,9 +3,11 @@ class Trip{
   private $conn;
   private $table_name = "Trips";
 
-  public $location;
+  public $name;
+  public $address;
   public $lat;
   public $lon;
+  public $type;
   public $vehicle_id;
   // Creates connection through Database object upon instantiation
   public function __construct($db){
@@ -16,15 +18,19 @@ class Trip{
     $query = "INSERT INTO
       " . $this->table_name . "
        SET
-        location = :location,
+        name = :name,
+        address = :address,
         lat = :lat,
         lon = :lon,
+        type = :type,
         vehicle_id = :vehicle_id";
 
     $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(':location', $this->location);
+    $stmt->bindParam(':name', $this->name);
+    $stmt->bindParam(':address', $this->address);
     $stmt->bindParam(':lat', $this->lat);
     $stmt->bindParam(':lon', $this->lon);
+    $stmt->bindParam(':type', $this->type);
     $stmt->bindParam(':vehicle_id', $this->vehicle_id);
 
     if($stmt->execute()){

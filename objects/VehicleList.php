@@ -16,7 +16,7 @@ class VehicleList{
       FROM
       " . $this->table_name . "
       ORDER BY
-      name
+      id
       ASC";
     $stmt = $this->conn->prepare($query);
 
