@@ -1,3 +1,5 @@
+// From the google maps api tutorial
+// https://developers.google.com/maps/articles/phpsqlajax_v3
 var customIcons = {
   restaurant: {
     icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
